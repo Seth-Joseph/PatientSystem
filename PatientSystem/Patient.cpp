@@ -97,3 +97,8 @@ void Patient::setAlertLevel(AlertLevel level)
 		cout << endl;
 	}
 }
+
+void Patient::addHistoricalVitals(const  Vitals* v)
+{
+	_vitals.push_back(v);
+}
