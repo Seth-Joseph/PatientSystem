@@ -9,7 +9,7 @@ class PatientFileAdapter : public AbstractPatientDatabaseLoader
 public:
     PatientFileAdapter(const std::string& filename) : _filename(filename), _fileLoader(std::make_unique<PatientFileLoader>()) {}
 
-    virtual void initaliseConnection() override {}
+    virtual void initialiseConnection() override {}
     virtual void loadPatients(std::vector<Patient*>& patientIn) override {
         std::vector<Patient*> loaded = _fileLoader->loadPatientFile(_filename);
         for (Patient* p : loaded)

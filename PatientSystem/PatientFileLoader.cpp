@@ -67,7 +67,7 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
                     int rr = stoi(rrStr);
 
                     Vitals* v = new Vitals(bt, bp, hr, rr);
-                    p->vitals().push_back(v);
+                    p->addHistoricalVitals(v);
                 }
             }
         }   
