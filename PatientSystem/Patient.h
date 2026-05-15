@@ -54,6 +54,8 @@ protected:
 	std::vector<const Vitals*> _vitals;
 	AlertLevel _alertLevel;
 
+	std::unique_ptr<AlertStrategy> _alertStrategy;
+
 	friend std::ostream& operator<<(std::ostream& os, const Patient& p);
 };
 

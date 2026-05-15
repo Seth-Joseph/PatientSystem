@@ -5,7 +5,7 @@
 #include <sstream>
 
 #include "Vitals.h"
-
+#include "AlertStrategy.h"
 
 using namespace std;
 
@@ -59,6 +59,19 @@ std::ostream& operator<<(std::ostream& os, const Patient& p)
 void Patient::addDiagnosis(const std::string& diagnosis)
 {
 	_diagnosis.push_back(diagnosis);
+
+	if (diagnosis == Diagnosis::CORDYCEPS_BRAIN_INFECTION)
+	{
+		_alertStrategy = make_unique<CordycepsStrategy>();
+	}
+	else if (diagnosis == Diagnosis::KEPRALS_SYNDROME)
+	{
+		_alertStrategy = make_unique<KepralsStrategy>();
+	}
+	else if (diagnosis == Diagnosis::ANDROMEDA_STRAIN)
+	{
+		_alertStrategy = make_unique<AndromedaStrategy>();
+	}
 }
 
 const std::string& Patient::primaryDiagnosis() const
@@ -69,7 +82,12 @@ const std::string& Patient::primaryDiagnosis() const
 void Patient::addVitals(const Vitals* v)
 {
 	_vitals.push_back(v);
-	// TODO: calculate alert levels
+	
+	if (_alertStrategy)
+	{
+		AlertLevel calculatedLevel = _alertStrategy->calculateAlert(this);
+		setAlertLevel(calculatedLevel);
+	}
 }
 
 const std::vector<const Vitals*> Patient::vitals() const
