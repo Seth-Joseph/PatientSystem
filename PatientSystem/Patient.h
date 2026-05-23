@@ -9,6 +9,8 @@
 
 // forward declare classes
 class Vitals;
+class AlertStrategy;
+class PatientObserver;
 
 class Diagnosis {
 public:
@@ -49,12 +51,22 @@ public:
 
 	void addHistoricalVitals(const Vitals* v);
 
+	void attach(PatientObserver* observer) { _observers.push_back(observer); }
+	void notifyObservers()
+	{
+		for (auto* obs : _observers)
+		{
+			obs->update(this);
+		}
+	}
+
 protected:
 	std::vector<std::string> _diagnosis;
 	std::vector<const Vitals*> _vitals;
 	AlertLevel _alertLevel;
 
 	std::unique_ptr<AlertStrategy> _alertStrategy;
+	std::vector<PatientObserver*> _observers;
 
 	friend std::ostream& operator<<(std::ostream& os, const Patient& p);
 };

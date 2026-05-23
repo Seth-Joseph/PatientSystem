@@ -45,6 +45,9 @@ void PatientManagementSystem::init()
 	_patientDatabaseLoader->loadPatients(_patients);
 	for (Patient* p : _patients) {
 		_patientLookup[p->uid()] = p;
+
+		p->attach(_hospitalAlertSystem.get());
+		p->attach(_gpNotificationSystem.get());
 	}
 
 	for (Patient* p : _patients) {

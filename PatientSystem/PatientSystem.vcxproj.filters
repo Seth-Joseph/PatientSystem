@@ -45,6 +45,9 @@
     <ClCompile Include="CompositePatientLoader.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="AlertStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Person.h">
@@ -78,6 +81,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PatientFileAdapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AlertStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PatientObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

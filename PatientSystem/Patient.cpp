@@ -114,6 +114,11 @@ void Patient::setAlertLevel(AlertLevel level)
 		}
 		cout << endl;
 	}
+
+	if (_alertLevel == AlertLevel::Red)
+	{
+		notifyObservers();
+	}
 }
 
 void Patient::addHistoricalVitals(const  Vitals* v)
