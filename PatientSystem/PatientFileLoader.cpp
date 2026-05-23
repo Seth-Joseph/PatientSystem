@@ -17,7 +17,7 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
 	vector<Patient*> patients{};
 
     std::ifstream inFile(file);
-    if (inFile.is_open()) {
+    if (!inFile.is_open()) {
         return patients;
     }
 
@@ -32,7 +32,7 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
         {
             continue;
         }
-        getline(ss, vitalsField, '|');
+        getline(ss, vitalsField);
 
         stringstream nameSS(nameField);
         string lastName, firstName;
