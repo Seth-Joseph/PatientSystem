@@ -23,6 +23,7 @@ class Patient : public Person {
 public:
 
 	Patient(const std::string& firstName, const std::string& lastName, std::tm birthday);
+	~Patient();
 
 	// return a calculated age for the patient
 	// this calculation is not accurate, but is suitable for assignment purposes

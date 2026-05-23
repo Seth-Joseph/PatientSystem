@@ -21,6 +21,8 @@ Patient::Patient(const std::string& firstName, const std::string& lastName, std:
 {
 }
 
+Patient::~Patient() = default;
+
 int Patient::age() const
 {	
 	// an inaccurate age estimate but fine for assignment purposes

@@ -31,6 +31,6 @@ AlertLevel AndromedaStrategy::calculateAlert(const Patient* patient)
     
     if (bp > 140) return AlertLevel::Red;
     if (bp > 130) return AlertLevel::Orange;
-    if (bp > 130) return AlertLevel::Yellow;
+    if (bp > 110) return AlertLevel::Yellow;
     return AlertLevel::Green;
 }
