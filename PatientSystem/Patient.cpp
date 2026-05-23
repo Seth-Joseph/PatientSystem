@@ -6,6 +6,7 @@
 
 #include "Vitals.h"
 #include "AlertStrategy.h"
+#include "PatientObserver.h"
 
 using namespace std;
 
@@ -124,4 +125,12 @@ void Patient::setAlertLevel(AlertLevel level)
 void Patient::addHistoricalVitals(const  Vitals* v)
 {
 	_vitals.push_back(v);
+}
+
+void Patient::notifyObservers()
+{
+	for (auto* obs : _observers)
+	{
+		obs->update(this);
+	}
 }

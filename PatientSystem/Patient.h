@@ -52,13 +52,7 @@ public:
 	void addHistoricalVitals(const Vitals* v);
 
 	void attach(PatientObserver* observer) { _observers.push_back(observer); }
-	void notifyObservers()
-	{
-		for (auto* obs : _observers)
-		{
-			obs->update(this);
-		}
-	}
+	void notifyObservers();
 
 protected:
 	std::vector<std::string> _diagnosis;
